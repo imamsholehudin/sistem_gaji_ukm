@@ -118,9 +118,12 @@ $count = mysqli_num_rows($query);
                                                 <td><?php echo $data['no_telp']; ?></td>
                                                 <td><?php echo $data['jabatan']; ?></td>
                                                 <td><a href="karyawan-detail.php?id=<?php echo $data['id']; ?>"
-                                                        class="btn btn-success">Detail</a> <a href="karyawan-ubah.php"
-                                                        class="btn btn-primary">Ubah</a> <a href="karyawan-hapus.php"
-                                                        class="btn btn-danger">Hapus</a></td>
+                                                        class="btn btn-success">Detail</a>
+                                                    <a href="karyawan-ubah.php?id=<?php echo $data['id']; ?>"
+                                                        class="btn btn-primary">Ubah</a> <a
+                                                        href="karyawan-hapus.php?id=<?php echo $data['id']; ?>"
+                                                        class="btn btn-danger">Hapus</a>
+                                                </td>
                                             </tr>
                                             <?php
                                             }

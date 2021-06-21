@@ -71,35 +71,35 @@
 
 
                                 <!-- form start -->
-                                <form>
+                                <form action="periode-tambah-proses.php" method="POST">
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Bulan</label>
-                                            <select class="form-control" name="bulan">
+                                            <select class="form-control" name="bulan" required>
                                                 <option>Pilih Bulan</option>
-                                                <option>Januari</option>
-                                                <option>Februari</option>
-                                                <option>Maret</option>
-                                                <option>April</option>
-                                                <option>Mei</option>
-                                                <option>Juni</option>
-                                                <option>Juli</option>
-                                                <option>Agustus</option>
-                                                <option>September</option>
-                                                <option>Oktober</option>
-                                                <option>November</option>
-                                                <option>Desember</option>
+                                                <option value="januari">Januari</option>
+                                                <option value="februari">Februari</option>
+                                                <option value="maret">Maret</option>
+                                                <option value="april">April</option>
+                                                <option value="mei">Mei</option>
+                                                <option value="juni">Juni</option>
+                                                <option value="juli">Juli</option>
+                                                <option value="agustus">Agustus</option>
+                                                <option value="september">September</option>
+                                                <option value="oktober">Oktober</option>
+                                                <option value="november">November</option>
+                                                <option value="desember">Desember</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label>Tahun</label>
                                             <input type="number" class="form-control" name="tahun"
-                                                id="exampleInputPassword1" placeholder="Enter Year">
+                                                id="exampleInputPassword1" placeholder="Enter Year" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Jam Kerja</label>
-                                            <input type="email" class="form-control" name="jam"
-                                                id="exampleInputPassword1" placeholder="Enter Hours Work">
+                                            <input type="numbter" class="form-control" name="jam"
+                                                id="exampleInputPassword1" placeholder="Enter Days Work" required>
                                         </div>
 
 

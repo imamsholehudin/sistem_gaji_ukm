@@ -71,44 +71,45 @@
 
 
                                 <!-- form start -->
-                                <form>
+                                <form action="karyawan-tambah-proses.php" method="POST">
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">NIK</label>
 
                                             <input type="text" class="form-control" name="nik"
-                                                id="exampleInputPassword1" placeholder="Enter NIK">
+                                                id="exampleInputPassword1" placeholder="Enter NIK" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Nama Karyawan</label>
 
                                             <input type="text" class="form-control" name="nama"
-                                                id="exampleInputPassword1" placeholder="Enter Name">
+                                                id="exampleInputPassword1" placeholder="Enter Name" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Telp</label>
                                             <input type="number" class="form-control" name="telp"
-                                                id="exampleInputPassword1" placeholder="Enter Telp">
+                                                id="exampleInputPassword1" placeholder="Enter Telp" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Email</label>
-                                            <input type="email" class="form-control" name="gaji_pokok"
-                                                id="exampleInputPassword1" placeholder="Enter Email">
+                                            <input type="email" class="form-control" name="email"
+                                                id="exampleInputPassword1" placeholder="Enter Email" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Alamat</label>
                                             <input type="Text" class="form-control" name="alamat"
-                                                id="exampleInputPassword1" placeholder="Enter Address">
+                                                id="exampleInputPassword1" placeholder="Enter Address" required>
                                         </div>
                                         <div class=" form-group">
                                             <label for="exampleInputPassword1">Jabatan</label>
                                             <input type="text" class="form-control" name="jabatan"
-                                                id="exampleInputPassword1" placeholder="Enter Position">
+                                                id="exampleInputPassword1" placeholder="Enter Position" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Pendidikan Terakhir</label>
                                             <input type="text" class="form-control" name="pendidikan"
-                                                id="exampleInputPassword1" placeholder="Enter Studies And School">
+                                                id="exampleInputPassword1" placeholder="Enter Studies And School"
+                                                required>
                                         </div>
 
 

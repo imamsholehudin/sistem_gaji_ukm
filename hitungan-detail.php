@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+include('koneksi.php');
+$id = $_GET['id'];
+$sql = "SELECT * FROM hitung LEFT JOIN karyawan ON hitung.id_karyawan = karyawan.id JOIN periode ON hitung.id_periode = periode.id WHERE hitung.id=" . $id;
+$query = mysqli_query($koneksi, $sql);
+
+?>
 
 <head>
     <meta charset="utf-8">
@@ -81,87 +88,98 @@
                                 <div class="card-header">
                                     <h3 class="card-title"><b>Detail Data Karyawan</b></h3>
                                     <br><br>
-                                    <a href="karyawan.php" class="btn btn-primary">Kembali</a>
+                                    <a href="hitungan.php" class="btn btn-primary">Kembali</a>
 
 
                                 </div>
                                 <!-- /.card-header -->
                                 <div class="card-body table-responsive p-0">
+                                    <?php
+                                    while ($data = mysqli_fetch_array($query)) {
+                                        //var_dump($data);
+
+                                    ?>
                                     <table class="table table-hover text-nowrap">
 
                                         <tr>
                                             <td>Nama Karyawan</td>
-                                            <td>Imam Sholehudin</td>
+                                            <td><?php echo $data['nama_karyawan']; ?></td>
                                         </tr>
                                         <tr>
                                             <td>No Telp</td>
-                                            <td>082212312</td>
+                                            <td><?php echo $data['no_telp']; ?></td>
                                         </tr>
                                         <tr>
                                             <td>Email</td>
-                                            <td>sholehudinimam@gmail.com</td>
+                                            <td><?php echo $data['email']; ?></td>
                                         </tr>
                                         <tr>
                                             <td>Alamat</td>
-                                            <td>jl.karang tineung dalam no.41B</td>
+                                            <td><?php echo $data['alamat']; ?></td>
                                         </tr>
                                         <tr>
                                             <td>Jabatan</td>
-                                            <td>Konsultan IT</td>
+                                            <td><?php echo $data['jabatan']; ?></td>
                                         </tr>
                                         <tr>
                                             <td>Pendidikan Terakhir</td>
-                                            <td>S1 Teknik Informatika</td>
+                                            <td><?php echo $data['pendidikan_terakhir']; ?></td>
                                         </tr>
                                         <tr>
                                             <td>Bulan, Tahun</td>
-                                            <td>januari, 2021</td>
+                                            <td><?php echo $data['bulan'] . ', ' . $data['tahun']; ?></td>
                                         </tr>
                                         <tr>
                                             <td>Gaji Pokok</td>
-                                            <td>Rp.2.000.000,-</td>
+                                            <td><?php echo $data['gaji_pokok']; ?></td>
                                         </tr>
                                         <tr>
                                             <td>Gaji Lembur</td>
-                                            <td>15.000,-</td>
+                                            <td><?php echo $data['gaji_lembur']; ?></td>
                                         </tr>
                                         <tr>
                                             <td>Jumlah Lembur (Jam)</td>
-                                            <td>5 Jam</td>
+                                            <td><?php echo $data['jumlah_lembur']; ?>Jam</td>
                                         </tr>
                                         <tr>
                                             <td>Sakit</td>
-                                            <td>0</td>
+                                            <td><?php echo $data['sakit']; ?></td>
                                         </tr>
                                         <tr>
                                             <td>Izin</td>
-                                            <td>0</td>
+                                            <td><?php echo $data['izin']; ?></td>
                                         </tr>
                                         <tr>
                                             <td>Telat</td>
-                                            <td>0</td>
+                                            <td><?php echo $data['telat']; ?></td>
                                         </tr>
                                         <tr>
                                             <td>Alpa</td>
-                                            <td>3</td>
+                                            <td><?php echo $data['alpa']; ?></td>
                                         </tr>
                                         <tr>
                                             <td>Gaji Kotor</td>
-                                            <td>Rp.2.075.000,-</td>
+                                            <td><?php $gaji_kotor = $data['gaji_pokok'] + ($data['gaji_lembur'] * $data['jumlah_lembur']);
+                                                    echo $gaji_kotor;
+                                                    ?>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td>Potongan Kehadiran</td>
-                                            <td>Rp.60.000,-</td>
+                                            <td><?php echo $potongan =  (((($data['alpa'] + $data['izin'] + $data['sakit']) / $data['waktu_kerja']) * $data['gaji_pokok']) + (($data['telat'] / 100) * $data['gaji_pokok']));
+                                                    ?></td>
                                         </tr>
                                         <tr>
                                             <td>Potongan lainnya</td>
-                                            <td>Rp.10.000,-</td>
+                                            <td><?php echo $data['potongan_lainnya']; ?></td>
                                         </tr>
                                         <tr>
                                             <td>Gaji Bersih</td>
-                                            <td>Rp.2.005.000,-</td>
+                                            <td><?php echo $gaber = $gaji_kotor - ($potongan + $data['potongan_lainnya']); ?>
+                                            </td>
                                         </tr>
                                     </table><br>
+                                    <?php } ?>
                                     <center>
                                         <a href="#" class="btn btn-success">Print</a>
                                     </center>

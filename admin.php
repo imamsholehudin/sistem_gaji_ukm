@@ -116,8 +116,10 @@ $count = mysqli_num_rows($query);
                                                 <td><?php echo $data['nama']; ?></td>
                                                 <td><?php echo $data['email']; ?></td>
                                                 <td><?php echo $data['password']; ?></td>
-                                                <td><a href="admin-ubah.php" class="btn btn-primary">Ubah</a> <a
-                                                        href="admin-hapus.php" class="btn btn-danger">Hapus</a></td>
+                                                <td><a href="admin-ubah.php?id=<?php echo $data['id']; ?>"
+                                                        class="btn btn-primary">Ubah</a> <a
+                                                        href="admin-hapus.php?id=<?php echo $data['id'] ?>"
+                                                        class="btn btn-danger">Hapus</a></td>
                                             </tr>
                                             <?php
                                                 $no++;

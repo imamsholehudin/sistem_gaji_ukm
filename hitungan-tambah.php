@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+include('koneksi.php');
+$sql_karyawan = "SELECT * FROM karyawan";
+$res_karyawan = mysqli_query($koneksi, $sql_karyawan);
+
+$sql_periode = "SELECT * FROM periode";
+$res_periode = mysqli_query($koneksi, $sql_periode);
+?>
 
 <head>
     <meta charset="utf-8">
@@ -71,66 +79,81 @@
 
 
                                 <!-- form start -->
-                                <form>
+                                <form action="hitungan-tambah-proses.php" method="POST">
+
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Nama Karyawan</label>
 
-                                            <select class="form-control" name="nama_karyawan">
+                                            <select class="form-control" name="nama_karyawan" required>
                                                 <option>Pilih Nama Karyawan</option>
-                                                <option>Imam Sholehudin</option>
-                                                <option>Yoga Adijaya</option>
+                                                <?php
+                                                while ($data_kar = mysqli_fetch_array($res_karyawan)) {
+
+                                                ?>
+                                                <option value="<?php echo $data_kar['id'] ?>">
+                                                    <?php echo $data_kar['nik'] . " - " . $data_kar['nama_karyawan'] . " - " . $data_kar['jabatan']; ?>
+                                                </option>
+
+                                                <?php } ?>
 
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label>Periode</label>
-                                            <select class="form-control" name="periode">
+                                            <select class="form-control" name="periode" required>
                                                 <option>Pilih Periode</option>
-                                                <option>2021 | Januari</option>
-                                                <option>2021 | Februari</option>
+                                                <?php
+                                                while ($data_per = mysqli_fetch_array($res_periode)) {
+
+                                                ?>
+                                                <option value="<?php echo $data_per['id'] ?>">
+                                                    <?php echo $data_per['bulan'] . " - " . $data_per['tahun'] . " - " . $data_per['waktu_kerja'] . " Jam Kerja"; ?>
+                                                </option>
+
+                                                <?php } ?>
 
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Gaji Pokok</label>
                                             <input type="number" class="form-control" name="gaji_pokok"
-                                                id="exampleInputPassword1" placeholder="Enter Sallary">
+                                                id="exampleInputPassword1" placeholder="Enter Sallary" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Gaji Lembur</label>
                                             <input type="number" class="form-control" name="gaji_lembur"
-                                                id="exampleInputPassword1" placeholder="Enter income">
+                                                id="exampleInputPassword1" placeholder="Enter income" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Jumlah Lembur</label>
                                             <input type="number" class="form-control" name="jml_lembur"
-                                                id="exampleInputPassword1" placeholder="Qyt">
+                                                id="exampleInputPassword1" placeholder="Qyt" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Sakit</label>
                                             <input type="number" class="form-control" name="sakit"
-                                                id="exampleInputPassword1" placeholder="Qyt">
+                                                id="exampleInputPassword1" placeholder="Qyt" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Izin</label>
                                             <input type="number" class="form-control" name="izin"
-                                                id="exampleInputPassword1" placeholder="Qyt">
+                                                id="exampleInputPassword1" placeholder="Qyt" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Telat</label>
                                             <input type="number" class="form-control" name="telat"
-                                                id="exampleInputPassword1" placeholder="Qyt">
+                                                id="exampleInputPassword1" placeholder="Qyt" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Alpa</label>
                                             <input type="number" class="form-control" name="alpa"
-                                                id="exampleInputPassword1" placeholder="Qyt">
+                                                id="exampleInputPassword1" placeholder="Qyt" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Potongan Lainnya</label>
                                             <input type="number" class="form-control" name="potongan"
-                                                id="exampleInputPassword1" placeholder="reduction">
+                                                id="exampleInputPassword1" placeholder="reduction" required>
                                         </div>
 
                                     </div>

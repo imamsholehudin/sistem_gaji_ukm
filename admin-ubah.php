@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+include('koneksi.php');
+$id = $_GET['id'];
+var_dump($id);
+$sql = "SELECT * FROM admin WHERE id = " . $id;
+$result = mysqli_query($koneksi, $sql);
+
+
+?>
 
 <head>
     <meta charset="utf-8">
@@ -71,22 +80,30 @@
 
 
                                 <!-- form start -->
-                                <form>
+                                <form method="POST" action="admin-ubah-proses.php">
+                                    <?php
+                                    while ($data = mysqli_fetch_array($result)) {
+
+                                    ?>
                                     <div class="card-body">
+                                        <input type="hidden" class="form-control" name="id" id="exampleInputEmail1"
+                                            placeholder="Name" value="<?php echo $data['id']; ?>" required>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Nama Lengkap</label>
                                             <input type="text" class="form-control" name="nama" id="exampleInputEmail1"
-                                                placeholder="Name">
+                                                placeholder="Name" value="<?php echo $data['nama']; ?>" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Email</label>
                                             <input type="email" class="form-control" name="email"
-                                                id="exampleInputEmail1" placeholder="Enter email">
+                                                id="exampleInputEmail1" placeholder="Enter email"
+                                                value="<?php echo $data['email']; ?>" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Password</label>
-                                            <input type="password" class="form-control" name="password"
-                                                id="exampleInputPassword1" placeholder="Password">
+                                            <input type="text" class="form-control" name="password"
+                                                id="exampleInputPassword1" placeholder="Password"
+                                                value="<?php echo $data['password']; ?>" required>
                                         </div>
 
                                     </div>
@@ -97,6 +114,7 @@
 
                                         <a href="admin.php" type="submit" class="btn btn-danger">Kembali </a>
                                     </div>
+                                    <?php } ?>
                                 </form>
 
 

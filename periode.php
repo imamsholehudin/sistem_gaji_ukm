@@ -115,8 +115,10 @@ $count = mysqli_num_rows($query);
                                                 <td><?php echo $no++; ?></td>
                                                 <td><?php echo $data['bulan']; ?></td>
                                                 <td><?php echo $data['tahun']; ?></td>
-                                                <td><?php echo $data['waktu_kerja']; ?> Jam</td>
-                                                <td> <a href="#" class="btn btn-danger">Hapus</a></td>
+                                                <td><?php echo $data['waktu_kerja'];
+                                                        ?> Hari</td>
+                                                <td> <a href="periode-hapus.php?id=<?php echo $data['id'] ?>"
+                                                        class="btn btn-danger">Hapus</a></td>
                                             </tr>
                                             <?php
                                             }

@@ -71,22 +71,22 @@
 
 
                                 <!-- form start -->
-                                <form>
+                                <form action="admin-tambah-proses.php" method="POST">
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Nama Lengkap</label>
                                             <input type="text" class="form-control" name="nama" id="exampleInputEmail1"
-                                                placeholder="Name">
+                                                placeholder="Name" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Email</label>
                                             <input type="email" class="form-control" name="email"
-                                                id="exampleInputEmail1" placeholder="Enter email">
+                                                id="exampleInputEmail1" placeholder="Enter email" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Password</label>
                                             <input type="password" class="form-control" name="password"
-                                                id="exampleInputPassword1" placeholder="Password">
+                                                id="exampleInputPassword1" placeholder="Password" required>
                                         </div>
 
                                     </div>

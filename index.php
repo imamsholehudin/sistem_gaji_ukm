@@ -1,5 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+include('koneksi.php');
+$res_admin = mysqli_query($koneksi, "SELECT * FROM admin");
+$count_admin = mysqli_num_rows($res_admin);
+
+$res_karyawan = mysqli_query($koneksi, "SELECT * FROM karyawan");
+$count_karyawan = mysqli_num_rows($res_karyawan);
+
+$res_periode = mysqli_query($koneksi, "SELECT * FROM periode");
+$count_periode = mysqli_num_rows($res_periode);
+
+$res_hitung = mysqli_query($koneksi, "SELECT * FROM hitung");
+$count_hitung = mysqli_num_rows($res_hitung);
+?>
 
 <head>
     <meta charset="utf-8">
@@ -61,7 +75,7 @@
                             <!-- small box -->
                             <div class="small-box bg-info">
                                 <div class="inner">
-                                    <h3>2</h3>
+                                    <h3><?php echo $count_admin; ?></h3>
 
                                     <p>Akun</p>
                                 </div>
@@ -76,7 +90,7 @@
                             <!-- small box -->
                             <div class="small-box bg-info">
                                 <div class="inner">
-                                    <h3>7</h3>
+                                    <h3><?php echo $count_karyawan; ?></h3>
 
                                     <p>Karyawan</p>
                                 </div>
@@ -91,7 +105,7 @@
                             <!-- small box -->
                             <div class="small-box bg-success">
                                 <div class="inner">
-                                    <h3>67<sup style="font-size: 20px"></sup></h3>
+                                    <h3><?php echo $count_periode; ?><sup style="font-size: 20px"></sup></h3>
 
                                     <p>Data Periode</p>
                                 </div>
@@ -107,7 +121,7 @@
                             <!-- small box -->
                             <div class="small-box bg-success">
                                 <div class="inner">
-                                    <h3>72</h3>
+                                    <h3><?php echo $count_hitung; ?></h3>
 
                                     <p>Data</p>
                                 </div>

@@ -2,7 +2,7 @@
 <html lang="en">
 <?php
 include('koneksi.php');
-$sql = "SELECT * FROM hitung INNER JOIN karyawan ON hitung.id_karyawan = karyawan.id JOIN periode ON hitung.id_periode = karyawan.id";
+$sql = "SELECT * FROM hitung LEFT JOIN karyawan ON hitung.id_karyawan = karyawan.id JOIN periode ON hitung.id_periode = periode.id";
 $query = mysqli_query($koneksi, $sql);
 $count = mysqli_num_rows($query);
 ?>
@@ -110,6 +110,8 @@ $count = mysqli_num_rows($query);
                                             <?php
                                             $no = 1;
                                             while ($data = mysqli_fetch_array($query)) {
+                                                //var_dump($data['0']);
+
                                             ?>
                                             <tr>
                                                 <td><?php echo $no++; ?></td>
@@ -117,13 +119,17 @@ $count = mysqli_num_rows($query);
                                                 <td><?php echo $data['bulan']; ?></td>
                                                 <td><?php echo $data['tahun']; ?></td>
                                                 <td><?php echo $data['waktu_kerja']; ?></td>
-                                                <td> <a href="hitungan-detail.php" class="btn btn-primary">Detail</a>
+                                                <td> <a href="hitungan-detail.php?id=<?php echo $data['0'] ?>"
+                                                        class="btn btn-primary">Detail</a>
                                                     <a href="#" class="btn btn-success">Print</a>
-                                                    <a href="hitungan-ubah.php" class="btn btn-warning">Ubah</a>
-                                                    <a href="#" class="btn btn-danger">Hapus</a>
+                                                    <a href="hitungan-ubah.php?id=<?php echo $data['0'] ?>"
+                                                        class="btn btn-warning">Ubah</a>
+                                                    <a href="hitungan-hapus.php?id=<?php echo $data['0'] ?>"
+                                                        class="btn btn-danger">Hapus</a>
                                                 </td>
                                             </tr>
-                                            <?php } ?>
+                                            <?php }
+                                            die; ?>
 
 
                                         </tbody>
